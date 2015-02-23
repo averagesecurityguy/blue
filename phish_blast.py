@@ -5,6 +5,7 @@ first_file = 'firstnames.txt'
 last_file = 'lastnames.txt'
 domain_file = 'domains.txt'
 pass_file = 'passwords.txt'
+ua_file = 'useragents.txt'
 login_url = 'http://jts-bd.org/admin/include/login.php'
 user_field = 'Email'
 pass_field = 'emailpassword'
@@ -32,11 +33,13 @@ def generate_username(first, last):
         return '{0}.{1}'.format(last, first)
 
 
-def send_creds(email, pwd):
+def send_creds(ua, email, pwd):
     print('Sending {0}/{1} to {2}.'.format(email, pwd, login_url))
+
+    headers = {'User-Agent': ua}
     creds = {user_field: email, pass_field: pwd}
     try:
-        requests.post(login_url, data=creds, allow_redirects=False)
+        requests.post(login_url, headers=headers, data=creds, allow_redirects=False)
 
     except Exception as e:
         print('Request failed: {0}'.format(str(e)))
@@ -47,12 +50,14 @@ if __name__ == '__main__':
     lasts = load_file(last_file)
     doms = load_file(domain_file)
     pwds = load_file(pass_file)
+    uas = load_file(ua_file)
 
     while True:
         first = random.choice(firsts)
         last = random.choice(lasts)
         dom = random.choice(doms)
         pwd = random.choice(pwds)
+        ua = random.choice(uas)
         email = '{0}@{1}'.format(generate_username(first, last), dom)
 
-        send_creds(email, pwd)
+        send_creds(ua, email, pwd)

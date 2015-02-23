@@ -6,9 +6,9 @@ last_file = 'lastnames.txt'
 domain_file = 'domains.txt'
 pass_file = 'passwords.txt'
 ua_file = 'useragents.txt'
-login_url = 'http://jts-bd.org/admin/include/login.php'
-user_field = 'Email'
-pass_field = 'emailpassword'
+login_url = ''
+user_field = ''
+pass_field = ''
 
 def load_file(filename):
     items = []

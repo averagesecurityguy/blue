@@ -1,0 +1,32 @@
+{
+  "ip_feed":[
+    {"source_ip": "0.0.0.0/0", "dest_port": "22", "attack_type": "brute_force", "solution": "Learn to use SSH keys!"},
+    {"source_ip": "0.0.0.0/0", "dest_port": "23", "attack_type": "brute_force", "solution": "Telnet? Really?"},
+    {"source_ip": "0.0.0.0/0", "dest_port": "80", "attack_type": "basic_auth_brute_force", "solution": "Grep logs, ban IPs that try to login to often."},
+    {"source_ip": "0.0.0.0/0", "dest_port": "80", "attack_type": "web_form_brute_force", "solution": "Implement login rate limits."},
+    {"source_ip": "0.0.0.0/0", "dest_port": "80", "attack_type": "cross_site_scripting", "solution": "Stop trusting user input. Period."},
+    {"source_ip": "0.0.0.0/0", "dest_port": "80", "attack_type": "sql_injection", "solution": "Fire your current developer(s)."},
+    {"source_ip": "0.0.0.0/0", "dest_port": "443", "attack_type": "basic_auth_brute_force", "solution": "Grep logs, ban IPs that try to login to often."},
+    {"source_ip": "0.0.0.0/0", "dest_port": "443", "attack_type": "web_form_brute_force", "solution": "Implement login rate limits."},
+    {"source_ip": "0.0.0.0/0", "dest_port": "443", "attack_type": "cross_site_scripting", "solution": "Stop trusting user input. Period."},
+    {"source_ip": "0.0.0.0/0", "dest_port": "443", "attack_type": "sql_injection", "solution": "Fire your current developer(s)."},
+    {"source_ip": "0.0.0.0/0", "dest_port": "8000", "attack_type": "basic_auth_brute_force", "solution": "Grep logs, ban IPs that try to login to often."},
+    {"source_ip": "0.0.0.0/0", "dest_port": "8000", "attack_type": "web_form_brute_force", "solution": "Implement login rate limits."},
+    {"source_ip": "0.0.0.0/0", "dest_port": "8000", "attack_type": "cross_site_scripting", "solution": "Stop trusting user input. Period."},
+    {"source_ip": "0.0.0.0/0", "dest_port": "8000", "attack_type": "sql_injection", "solution": "Fire your current developer(s)."},
+    {"source_ip": "0.0.0.0/0", "dest_port": "8080", "attack_type": "basic_auth_brute_force", "solution": "Grep logs, ban IPs that try to login to often."},
+    {"source_ip": "0.0.0.0/0", "dest_port": "8080", "attack_type": "web_form_brute_force", "solution": "Implement login rate limits."},
+    {"source_ip": "0.0.0.0/0", "dest_port": "8080", "attack_type": "cross_site_scripting", "solution": "Stop trusting user input. Period."},
+    {"source_ip": "0.0.0.0/0", "dest_port": "8080", "attack_type": "sql_injection", "solution": "Fire your current developer(s)."}
+    {"source_ip": "0.0.0.0/0", "dest_port": "any", "attack_type": "various", "solution": "Close any ports you don't need."}
+  ],
+  "actor_feed":[
+    {"actor": "every_damn_body", "dest_service": "email", "attack_type": "phishing", "solution": "DNS Whitelisting. Yes, it's a thing."
+    {"actor": "every_damn_body", "dest_service": "social_networks", "attack_type": "phishing", "solution": "Block employee access to social media. Let them infect their own device."}
+  ],
+  "vendor_feed":[
+    {"vendor": "av_company", "attack_type": "budget_drain", "solution": "Free AV || GTFO"},
+    {"vendor": "av_company", "attack_type": "inflated_succes_rate", "solution": "I've got 10 lines of C that will kick your AV's butt."},
+    {"vendor": "blinky_box", "attack_type": "budget_drain", "solution": "Hire and train good people. Buy whatever tools they say they need."},
+  ]
+}

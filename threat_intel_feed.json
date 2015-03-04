@@ -21,7 +21,7 @@
     {"source_ip": "0.0.0.0/0", "dest_port": "any", "attack_type": "various", "solution": "Close any ports you don't need."}
   ],
   "actor_feed":[
-    {"actor": "every_damn_body", "dest_service": "email", "attack_type": "phishing", "solution": "DNS Whitelisting. Yes, it's a thing."
+    {"actor": "every_damn_body", "dest_service": "email", "attack_type": "phishing", "solution": "DNS Whitelisting. Yes, it's a thing."},
     {"actor": "every_damn_body", "dest_service": "social_networks", "attack_type": "phishing", "solution": "Block employee access to social media. Let them infect their own device."}
   ],
   "vendor_feed":[

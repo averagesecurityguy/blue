@@ -1,6 +1,7 @@
 import datetime
 import sqlite3
 import time
+import sys
 import re
 
 #-----------------------------------------------------------------------------
@@ -10,9 +11,6 @@ q_re = re.compile(r'(.*) dnsmasq\[\d+\]: query\[(.*)\] (.*) from (.*)')
 f_re = re.compile(r'(.*) dnsmasq\[\d+\]: forwarded (.*) to (.*)')
 r_re = re.compile(r'(.*) dnsmasq\[\d+\]: (reply|cached) (.*) is (.*)')
 
-#-----------------------------------------------------------------------------
-# Constants
-#-----------------------------------------------------------------------------
 
 #-----------------------------------------------------------------------------
 # Functions
@@ -100,6 +98,12 @@ def add_reply(ip, rtype, name, ts):
 #-----------------------------------------------------------------------------
 # Main
 #-----------------------------------------------------------------------------
+if len(sys.argv) != 2:
+    print 'Usage: dnsmasq_parse.py logfile'
+    sys.exit()
+
+logfile = sys.argv[1]
+
 counts = {'lc': 0, 'qc': 0, 'fc': 0, 'rc': 0, 'bc':0}
 
 # Create the SQLite connection
@@ -109,11 +113,11 @@ c = conn.cursor()
 create_tables()
 
 # Parse the log file.
-for line in open('dnsmasq.log.1'):
+for line in open(logfile):
     line = line.rstrip()
     counts['lc'] += 1
 
-    if (counts['lc'] % 1000) == 0:
+    if (counts['lc'] % 10000) == 0:
         print 'Processed {0} lines.'.format(counts['lc'])
         conn.commit()
 
@@ -129,4 +133,7 @@ for line in open('dnsmasq.log.1'):
     else:
         counts['bc'] += 1
 
-print counts
+print 'Imported {0} log entries.'.format(counts['lc'] - counts['bc'])
+print '{0} queries, {1} forwards, and {2} replies.'.format(counts['qc'],
+                                                           counts['fc'],
+                                                           counts['rc'])
